@@ -1,0 +1,42 @@
+
+{% if latest_magazine_list %}
+    <ul>
+    {% for magazine in latest_magazine_list %}
+        {% if magazine.id == latest_magazine_list.count %}
+            <div style="text-align: center; justify-content: center;"> 
+                <h2> LATEST MAGAZINE </h2>
+                <a href="/magazine/{{ magazine.id }}/">
+                <img src="{{ magazine.cover.url }}" style="float: left;">
+                <h3> {{ magazine.headline }} </h3>
+                <p> {{magazine.pub_date}} </p>
+                <ul>
+                    {% for highlight in magazine.highlight_set.all %}
+                        <li>
+                            <p> {{highlight.content}} </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+                </a>
+            </div>
+            <div style="clear:both"> </div>
+        {% else %}
+            <li>
+                <a href="/magazine/{{ magazine.id }}/">
+                <img src="{{ magazine.cover.url }}" style="float: left; width: 15%;">
+                <h4> {{ magazine.headline }} </h4>
+                <p> {{magazine.pub_date}} </p>
+                <ul>
+                    {% for highlight in magazine.highlight_set.all %}
+                        <li>
+                            <p> {{highlight.content}} </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+        	   </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> Coming Soon! </p>
+{% endif %}

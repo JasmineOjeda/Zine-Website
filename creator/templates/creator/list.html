@@ -1,0 +1,15 @@
+
+{% if creator_list %}
+    <ul>
+    {% for creator in creator_list %}
+        <li><a href="/creator/{{ creator.id }}/">
+        
+		<img src="{{ creator.profile_pic.url }}" style="float: left;">
+        <h2> {{ creator.name }} </h2>
+		
+    	</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Content Creators are available at the moment.</p>
+{% endif %}

@@ -1,0 +1,20 @@
+<div>
+	<img src="{{ creator.profile_pic.url }}" style="float: left;">
+	<h2> {{ creator.name }} </h2>
+	<a href="{{ creator.twitch_link }}"> Twitch Link </p>
+</div>
+<br>
+
+<div>
+	<ul>
+    {% for highlight in related_highlights %}
+        <li><a href="/article/{{ article.id }}/">
+		
+        <img src="{{ article.thumbnail.url }}" style="float: left;">
+        <h2> {{ magazine.title }} </h2>
+        <p> {{magazine.pub_date}} </p>
+		
+    	</a></li>
+    {% endfor %}
+    </ul>
+</div>
